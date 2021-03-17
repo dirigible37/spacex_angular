@@ -1,10 +1,15 @@
-<h1>Angular Router App</h1>
-<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
-<nav>
-  <ul>
-    <li><a routerLink="/launches-component" routerLinkActive="active">Launches</a></li>
-    <li><a routerLink="/missions-component" routerLinkActive="active">Missions</a></li>
-  </ul>
-</nav>
-<!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>
+<div id="app-div"> 
+  <mat-sidenav-container >
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <h1>Plasma Games SpaceX Data Explorer</h1>
+        <span class="menu-spacer"></span>
+        <a mat-button routerLinkActive="active" [routerLink]="'/launches-component'"> Launches </a>
+        <span class="menu-spacer"></span>
+        <a mat-button routerLinkActive="active" [routerLink]="'/missions-component'"> Missions </a>
+      </mat-toolbar-row>
+
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-container>
+<div>
