@@ -4,10 +4,11 @@
         <mat-panel-title>
             {{launch.mission_name}} 
         </mat-panel-title>
-        <mat-panel-description>
+        <mat-panel-description fxShow fxHide.lt-md>
             {{launch.launch_site.site_name_long}} 
         </mat-panel-description>
         </mat-expansion-panel-header>
+        <p matLine fxShow fxHide.gt-sm> {{launch.launch_site.site_name_long}}  </p>
         <p matLine> {{launch.launch_date_local}} </p>
         <p matLine> {{launch.launch_success}} </p>
     </mat-expansion-panel>

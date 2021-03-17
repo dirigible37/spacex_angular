@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
