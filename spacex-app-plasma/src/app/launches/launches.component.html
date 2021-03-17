@@ -1,0 +1,14 @@
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let launch of launches">
+        <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{launch.mission_name}} 
+        </mat-panel-title>
+        <mat-panel-description>
+            {{launch.launch_site.site_name_long}} 
+        </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p matLine> {{launch.launch_date_local}} </p>
+        <p matLine> {{launch.launch_success}} </p>
+    </mat-expansion-panel>
+</mat-accordion>
