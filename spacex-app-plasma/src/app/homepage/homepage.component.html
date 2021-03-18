@@ -1,7 +1,50 @@
-<div class="container">
-    <img src="../../assets/img/space.png" alt="Space">
-    <div class="centered">
-        <h1>SpaceX API Data Explorer</h1>
-        <h2>View launch and mission data directly from SpaceX</h2>
+<div class="content">
+    <div class="header">
+        <img class="header-image" src="../../assets/img/space.png" alt="Space">
+        <div class="centered">
+            <h1>SpaceX API Data Explorer</h1>
+            <h2>View launch and mission data directly from SpaceX</h2>
+        </div>
+    </div>
+    <div class="card-list-container" fxLayout="row wrap" fxLayout.xs="column">
+        <div class="card-container" fxFlex="25%" fxFlex.xs="90%" fxFlex.sm="30%">
+            <mat-card class="mat-elevation-z4"  [routerLink]="'/launches'">
+                <mat-card-header>
+                <mat-card-title>Launches</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image class="card-image" src="../../assets/img/launch.jpg">
+                <mat-card-content>
+                <p>
+                    View details about all of the SpaceX launches
+                </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="card-container" fxFlex="25%" fxFlex.xs="90%" fxFlex.sm="30%">
+            <mat-card class="mat-elevation-z4"  [routerLink]="'/missions'">
+                <mat-card-header>
+                <mat-card-title>Missions</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image class="card-image" src="../../assets/img/mission.png">
+                <mat-card-content>
+                <p>
+                    View details about all of the SpaceX missions
+                </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="card-container" fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="30%">
+            <mat-card class="mat-elevation-z4" [routerLink]="'/launches'">
+                <mat-card-header>
+                <mat-card-title>Something Else</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image class="card-image" src="../../assets/img/launch.jpg">
+                <mat-card-content>
+                <p>
+                    View details about all of the SpaceX Something Else
+                </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
 </div>
