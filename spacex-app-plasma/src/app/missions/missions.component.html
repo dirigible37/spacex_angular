@@ -1,4 +1,8 @@
-<mat-accordion>
+<mat-spinner *ngIf="loading" ></mat-spinner>
+<div *ngIf="error">
+    Error Retrieving Data: {{error}}
+</div>
+<mat-accordion *ngIf="missions" >
     <mat-expansion-panel *ngFor="let mission of missions">
         <mat-expansion-panel-header>
         <mat-panel-title>

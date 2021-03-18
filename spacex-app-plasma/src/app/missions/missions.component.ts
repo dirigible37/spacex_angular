@@ -1,6 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {Apollo, gql} from 'apollo-angular';
 
+const GET_MISSION_OBJECT = gql`
+      {
+        missions {
+          name
+          website
+          twitter
+          description
+        }
+      }
+      `;
+
 @Component({
   selector: 'app-missions',
   templateUrl: './missions.component.html',
@@ -18,16 +29,7 @@ export class MissionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.apollo.watchQuery({
-      query: gql`
-      {
-        missions(limit: 10) {
-          name
-          website
-          twitter
-          description
-        }
-      }
-      `,
+      query: GET_MISSION_OBJECT
     })
     .valueChanges
     .subscribe((result: any) => {
