@@ -1,5 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import {Apollo, gql} from 'apollo-angular';
+import {FormControl} from '@angular/forms';
+
+const GET_PAST_LAUNCHES = gql`
+  {
+    launchesPast {
+      mission_name
+      launch_date_local
+      launch_success
+      launch_site {
+        site_name_long
+      }
+    }
+  }
+`;
 
 @Component({
   selector: 'app-launches',
@@ -7,35 +21,31 @@ import {Apollo, gql} from 'apollo-angular';
   styleUrls: ['./launches.component.sass']
 })
 export class LaunchesComponent implements OnInit {
-  launches: any[];
+  launchesBackend: any[];
+  launchesDisplay: any[];
   loading = true;
   error: any;
+  myControl = new FormControl();
 
   constructor(private apollo: Apollo) {
-    this.launches = [];
+    this.launchesBackend = [];
+    this.launchesDisplay = [];
   }
 
   ngOnInit(): void {
     this.apollo.watchQuery({
-      query: gql`
-      {
-        launchesPast(limit: 10) {
-          mission_name
-          launch_date_local
-          launch_success
-          launch_site {
-            site_name_long
-          }
-        }
-      }
-      `,
+      query: GET_PAST_LAUNCHES
     })
     .valueChanges
     .subscribe((result: any) => {
-      this.launches = result?.data?.launchesPast;
+      this.launchesBackend = result?.data?.launchesPast;
+      this.launchesDisplay = this.launchesBackend;
       this.loading = result.loading;
       this.error = result.error;
     });
-  }
 
+    this.myControl.valueChanges.subscribe(val => {
+      this.launchesDisplay = this.launchesBackend.filter((launch) => launch.mission_name.toLowerCase().startsWith(val.toLowerCase()))
+    })
+  }
 }
