@@ -25,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ShipsComponent } from './ships/ships.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { environment } from '../environments/environment';
     LaunchesComponent,
     MissionsComponent,
     HomepageComponent,
-    FooterComponent
+    FooterComponent,
+    ShipsComponent
   ],
   imports: [
     BrowserModule,

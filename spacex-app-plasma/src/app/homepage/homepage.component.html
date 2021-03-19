@@ -12,7 +12,9 @@
                 <mat-card-header>
                 <mat-card-title>Launches</mat-card-title>
                 </mat-card-header>
-                <img mat-card-image class="card-image" src="../../assets/img/launch.jpg" alt="Launch Image">
+                <div class="image-container">
+                    <img mat-card-image class="card-image" src="../../assets/img/launch.jpg" alt="Launch Image">
+                </div>
                 <mat-card-content>
                 <p>
                     View details about all of the SpaceX launches
@@ -25,7 +27,9 @@
                 <mat-card-header>
                 <mat-card-title>Missions</mat-card-title>
                 </mat-card-header>
-                <img mat-card-image class="card-image" src="../../assets/img/mission.png" alt="Mission Image">
+                <div class="image-container">
+                    <img mat-card-image class="card-image" src="../../assets/img/mission.png" alt="Mission Image">
+                </div>
                 <mat-card-content>
                 <p>
                     View details about all of the SpaceX missions
@@ -34,14 +38,16 @@
             </mat-card>
         </div>
         <div class="card-container" fxFlex="350px" fxFlex.xs="90%" fxFlex.sm="45%" fxFlex.md="30%">
-            <mat-card class="mat-elevation-z4" [routerLink]="'/launches'">
+            <mat-card class="mat-elevation-z4" [routerLink]="'/ships'">
                 <mat-card-header>
-                <mat-card-title>Something Else</mat-card-title>
+                <mat-card-title>Ships</mat-card-title>
                 </mat-card-header>
-                <img mat-card-image class="card-image" src="../../assets/img/launch.jpg" alt="Mission Image">
+                <div class="image-container">
+                    <img mat-card-image class="card-image" src="../../assets/img/ships.jpeg" alt="Ships Image">
+                </div>
                 <mat-card-content>
                 <p>
-                    View details about all of the SpaceX Something Else
+                    View details about the ships in the SpaceX Fleet
                 </p>
                 </mat-card-content>
             </mat-card>
