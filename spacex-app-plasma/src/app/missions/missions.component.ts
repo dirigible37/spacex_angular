@@ -1,5 +1,26 @@
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import {Apollo, gql} from 'apollo-angular';
+
+const GET_MISSION_OBJECT = gql`
+      {
+        missions {
+          name
+          website
+          twitter
+          description
+          payloads {
+            manufacturer
+            id
+            nationality
+            orbit
+            payload_mass_lbs
+            reused
+            payload_type
+          }
+        }
+      }
+      `;
 
 @Component({
   selector: 'app-missions',
@@ -11,6 +32,7 @@ export class MissionsComponent implements OnInit {
   loading = true;
   panelOpenState = false;
   error: any;
+  displayedColumns: string[] = ['manufacturer', 'id', 'nationality', 'payload_mass_lbs', 'payload_type'];
 
   constructor(private apollo: Apollo) {
     this.missions = [];
@@ -18,20 +40,14 @@ export class MissionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.apollo.watchQuery({
-      query: gql`
-      {
-        missions(limit: 10) {
-          name
-          website
-          twitter
-          description
-        }
-      }
-      `,
+      query: GET_MISSION_OBJECT
     })
     .valueChanges
     .subscribe((result: any) => {
-      this.missions = result?.data?.missions;
+      //Sometimes mission.payloads is null, and fills the table with empty rows. This filters those out
+      this.missions = result?.data?.missions.map((mission : any) => ({
+        ...mission, payloads: mission.payloads.filter((payload : any) => !!payload)
+      }))
       this.loading = result.loading;
       this.error = result.error;
     });

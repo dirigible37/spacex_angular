@@ -5,17 +5,30 @@ mat-panel-title
     width: 150px
 
 mat-panel-description
-    overflow:hidden
-    white-space:nowrap
-    text-overflow:ellipsis
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
     width: 50%
 
-.text-container-closed 
-  overflow: hidden
-  white-space: nowrap
-  text-overflow: ellipsis
+.missions-container
+    margin-top: 15px
 
-.text-container-open 
-  overflow: hidden
-  white-space: normal
-  text-overflow: ellipsis
+mat-table
+    overflow-x: auto
+    width: 100%
+
+.mat-cell,
+.mat-header-cell 
+    word-wrap: initial
+    display: table-cell
+    padding: 0px 10px
+    line-break: unset
+    width: 100%
+    white-space: nowrap
+    overflow: hidden
+    vertical-align: middle
+
+
+.mat-row,
+.mat-header-row 
+    display: table-row

@@ -1,15 +1,35 @@
-<div id="app-div"> 
-  <mat-sidenav-container >
-    <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <h1>Plasma Games SpaceX Data Explorer</h1>
-        <span class="menu-spacer"></span>
-        <a mat-button routerLinkActive="active" [routerLink]="'/launches-component'"> Launches </a>
-        <span class="menu-spacer"></span>
-        <a mat-button routerLinkActive="active" [routerLink]="'/missions-component'"> Missions </a>
-      </mat-toolbar-row>
-
-    </mat-toolbar>
-    <router-outlet></router-outlet>
+<div class="app-div"> 
+  <mat-toolbar color="primary"> 
+    <a routerLinkActive="active" [routerLink]="'home'" class="header mat-button" aria-label="Home"><mat-icon class="home-icon">home</mat-icon></a>
+    <span class="menu-spacer"></span>
+    <div fxShow fxHide.lt-sm>
+      <span class="menu-spacer"></span>
+      <a mat-button routerLinkActive="active" [routerLink]="'/launches'"> Launches </a>
+      <span class="menu-spacer"></span>
+      <a mat-button routerLinkActive="active" [routerLink]="'/missions'"> Missions </a>
+      <span class="menu-spacer"></span>
+      <a mat-button routerLinkActive="active" [routerLink]="'/ships'"> Ships </a>
+    </div>  
+    <div fxShow fxHide.gt-xs class="hamburger">
+      <button (click)="sidenav.toggle()" mat-icon-button aria-label="Menu Button">
+          <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a mat-list-item routerLinkActive="active" [routerLink]="'/launches'" (click)="sidenav.toggle()"> Launches </a>
+        <a mat-list-item routerLinkActive="active" [routerLink]="'/missions'" (click)="sidenav.toggle()"> Missions </a>
+        <a mat-list-item routerLinkActive="active" [routerLink]="'/ships'" (click)="sidenav.toggle()"> Ships </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
   </mat-sidenav-container>
 <div>
+<app-footer></app-footer>
