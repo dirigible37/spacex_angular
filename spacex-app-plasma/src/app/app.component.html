@@ -1,6 +1,6 @@
 <div class="app-div"> 
   <mat-toolbar color="primary"> 
-    <a routerLinkActive="active" [routerLink]="'home'" class="header mat-button"><mat-icon class="home-icon">home</mat-icon></a>
+    <a routerLinkActive="active" [routerLink]="'home'" class="header mat-button" aria-label="Home"><mat-icon class="home-icon">home</mat-icon></a>
     <span class="menu-spacer"></span>
     <div fxShow fxHide.lt-sm>
       <span class="menu-spacer"></span>
@@ -9,7 +9,7 @@
       <a mat-button routerLinkActive="active" [routerLink]="'/missions'"> Missions </a>
     </div>  
     <div fxShow fxHide.gt-xs class="hamburger">
-      <button (click)="sidenav.toggle()" mat-icon-button >
+      <button (click)="sidenav.toggle()" mat-icon-button aria-label="Menu Button">
           <mat-icon>menu</mat-icon>
       </button>
     </div>
@@ -24,23 +24,9 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div style="height: 88vh;">
-  
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 <div>
-<footer class="btmFooter">
-  <mat-toolbar> 
-    <div>
-      <span class="menu-spacer"></span>
-      <a mat-button routerLinkActive="active" href="https://play.plasma.games/" target="_blank"> Plasma Games<mat-icon class="launch-icon">launch</mat-icon></a>
-      <span class="menu-spacer"></span>
-      <span class="menu-vertical-line"></span>
-      <a mat-button routerLinkActive="active" href="https://www.spacex.com/" target="_blank"> SpaceX<mat-icon class="launch-icon">launch</mat-icon></a>
-      <span class="menu-spacer"></span>
-      <span class="menu-vertical-line"></span>
-      <a mat-button routerLinkActive="active" href="https://www.linkedin.com/in/winslowmohr/" target="_blank"> About Me<mat-icon class="launch-icon">launch</mat-icon></a>
-    </div>  
-  </mat-toolbar>
-</footer>
+<app-footer></app-footer>

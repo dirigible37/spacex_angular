@@ -17,7 +17,23 @@
         </mat-panel-description>
         </mat-expansion-panel-header>
         <p matLine fxShow fxHide.gt-sm> {{launch.launch_site.site_name_long}}  </p>
-        <p matLine> {{launch.launch_date_local}} </p>
-        <p matLine> {{launch.launch_success}} </p>
+        <a mat-button *ngIf="launch.links.article_link" href="{{launch.links.article_link}}" target="_blank"> Article </a>
+        <a mat-button href="{{launch.links.video_link}}" target="_blank"> Video </a>
+        <div matline class="data-header">
+            <h4> Launch Date:  </h4>
+            <p> {{launch.launch_date_local}} </p>
+        </div>
+        <div matline class="data-header">
+            <h4> Launch Success:  </h4>
+            <p> {{launch.launch_success}} </p>
+        </div>
+        <div matline class="data-header">
+            <h4> Rocket Name:  </h4>
+            <p> {{launch.rocket.rocket_name}} </p>
+        </div>
+        <div matline *ngIf="launch.rocket.first_stage.cores[0].core" class="data-header">
+            <h4> First Stage Reuse Count:  </h4>
+            <p> {{launch.rocket.first_stage.cores[0].core.reuse_count}} </p>
+        </div>
     </mat-expansion-panel>
 </mat-accordion>

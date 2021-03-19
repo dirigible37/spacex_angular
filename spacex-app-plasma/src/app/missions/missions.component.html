@@ -2,17 +2,49 @@
 <div *ngIf="error">
     Error Retrieving Data: {{error}}
 </div>
-<mat-accordion *ngIf="missions" >
-    <mat-expansion-panel *ngFor="let mission of missions">
-        <mat-expansion-panel-header>
-        <mat-panel-title>
-            {{mission.name}} 
-        </mat-panel-title>
-        <mat-panel-description id="test"> 
-        </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p matLine> {{mission.description}} </p>
-        <p matLine> {{mission.website}} </p>
-        <p matLine> {{mission.twitter}} </p>
-    </mat-expansion-panel>
-</mat-accordion>
+<div class="missions-container">
+    <mat-accordion *ngIf="missions" >
+        <mat-expansion-panel *ngFor="let mission of missions">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{mission.name}} 
+            </mat-panel-title>
+            <mat-panel-description id="test"> 
+            </mat-panel-description>
+            </mat-expansion-panel-header>
+            <a mat-button *ngIf="mission.website" href="{{mission.website}}" target="_blank"> Website </a>
+            <a mat-button *ngIf="mission.twitter" href="{{mission.twitter}}" target="_blank"> Twitter </a>
+            <p matLine> {{mission.description}} </p>
+            <h2>Payloads</h2>
+            <table matLine mat-table [dataSource]="mission.payloads" class="mat-elevation-z8">
+                <ng-container matColumnDef="manufacturer">
+                  <th mat-header-cell *matHeaderCellDef> Manufacturer </th>
+                  <td mat-cell *matCellDef="let element"> {{element?.manufacturer}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef> Id </th>
+                  <td mat-cell *matCellDef="let element"> {{element?.id}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="nationality">
+                  <th mat-header-cell *matHeaderCellDef> Nationality </th>
+                  <td mat-cell *matCellDef="let element"> {{element?.nationality}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="payload_mass_lbs">
+                  <th mat-header-cell *matHeaderCellDef> Payload Mass (lbs) </th>
+                  <td mat-cell *matCellDef="let element"> {{element?.payload_mass_lbs}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="payload_type">
+                  <th mat-header-cell *matHeaderCellDef> Payload Type </th>
+                  <td mat-cell *matCellDef="let element"> {{element?.payload_type}} </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

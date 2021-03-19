@@ -11,6 +11,20 @@ const GET_PAST_LAUNCHES = gql`
       launch_site {
         site_name_long
       }
+      links {
+        article_link
+        video_link
+      }
+      rocket {
+        rocket_name
+        first_stage {
+          cores {
+            core {
+              reuse_count
+            }
+          }
+        }
+      }
     }
   }
 `;

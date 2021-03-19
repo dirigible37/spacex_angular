@@ -1,3 +1,4 @@
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import {Apollo, gql} from 'apollo-angular';
 
@@ -8,6 +9,15 @@ const GET_MISSION_OBJECT = gql`
           website
           twitter
           description
+          payloads {
+            manufacturer
+            id
+            nationality
+            orbit
+            payload_mass_lbs
+            reused
+            payload_type
+          }
         }
       }
       `;
@@ -22,6 +32,7 @@ export class MissionsComponent implements OnInit {
   loading = true;
   panelOpenState = false;
   error: any;
+  displayedColumns: string[] = ['manufacturer', 'id', 'nationality', 'payload_mass_lbs', 'payload_type'];
 
   constructor(private apollo: Apollo) {
     this.missions = [];
@@ -33,7 +44,7 @@ export class MissionsComponent implements OnInit {
     })
     .valueChanges
     .subscribe((result: any) => {
-      this.missions = result?.data?.missions;
+      this.missions = result?.data?.missions.map((mission : any) => ({...mission, payloads: mission.payloads.filter((payload : any) => !!payload)}))
       this.loading = result.loading;
       this.error = result.error;
     });
