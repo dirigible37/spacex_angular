@@ -52,6 +52,7 @@ export class LaunchesComponent implements OnInit {
     })
     .valueChanges
     .subscribe((result: any) => {
+      //Load original launches list, and the display list that will be filtered
       this.launchesBackend = result?.data?.launchesPast;
       this.launchesDisplay = this.launchesBackend;
       this.loading = result.loading;
@@ -59,6 +60,7 @@ export class LaunchesComponent implements OnInit {
     });
 
     this.myControl.valueChanges.subscribe(val => {
+      //Filter backend launches using the search query, and set displayed launches
       this.launchesDisplay = this.launchesBackend.filter((launch) => launch.mission_name.toLowerCase().startsWith(val.toLowerCase()))
     })
   }

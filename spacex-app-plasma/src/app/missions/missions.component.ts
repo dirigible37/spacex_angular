@@ -44,6 +44,7 @@ export class MissionsComponent implements OnInit {
     })
     .valueChanges
     .subscribe((result: any) => {
+      //Sometimes mission.payloads is null, and fills the table with empty rows. This filters those out
       this.missions = result?.data?.missions.map((mission : any) => ({...mission, payloads: mission.payloads.filter((payload : any) => !!payload)}))
       this.loading = result.loading;
       this.error = result.error;
