@@ -2,42 +2,44 @@
 <div *ngIf="error">
     Error Retrieving Data: {{error}}
 </div>
-<mat-accordion *ngIf="ships.length">
-    <mat-expansion-panel *ngFor="let ship of ships">
-        <mat-expansion-panel-header>
-        <mat-panel-title>
-            {{ship.name}} 
-        </mat-panel-title>
-        <mat-panel-description fxShow fxHide.lt-md>
-            {{ship.type}} 
-        </mat-panel-description>
-        </mat-expansion-panel-header>
-        <img matline src="{{ship.image}}" alt="Ship Image"  *ngIf="ship.image"/>
-        <br>
-        <a matline mat-button *ngIf="ship.url" href="{{ship.url}}" target="_blank"> Website </a>
-        <div matline class="data-header">
-            <h4> Home Port:  </h4>
-            <p> {{ship.home_port}} </p>
-        </div>
-        <div matline class="data-header" *ngIf="ship.attempted_landings">
-            <h4> Attempted Landings:  </h4>
-            <p> {{ship.attempted_landings}} </p>
-        </div>
-        <div matline class="data-header" *ngIf="ship.successful_landings">
-            <h4> Home Port:  </h4>
-            <p> {{ship.successful_landings}} </p>
-        </div>
-        <div matline class="data-header">
-            <h4> Active:  </h4>
-            <p> {{ship.active}} </p>
-        </div>
-        <div matline class="data-header" *ngIf="ship.weight_lbs">
-            <h4> Weight:  </h4>
-            <p> {{ship.weight_lbs}} </p>
-        </div>
-        <div matline class="data-header">
-            <h4> Year Built:  </h4>
-            <p> {{ship.year_built}} </p>
-        </div>
-    </mat-expansion-panel>
-</mat-accordion>
+<div class="ships-container">
+    <mat-accordion *ngIf="ships.length">
+        <mat-expansion-panel *ngFor="let ship of ships">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ship.name}} 
+            </mat-panel-title>
+            <mat-panel-description fxShow fxHide.lt-md>
+                {{ship.type}} 
+            </mat-panel-description>
+            </mat-expansion-panel-header>
+            <img matline src="{{ship.image}}" alt="Ship Image"  *ngIf="ship.image"/>
+            <br>
+            <a matline mat-button *ngIf="ship.url" href="{{ship.url}}" target="_blank"> Website </a>
+            <div matline class="data-header">
+                <h4> Home Port:  </h4>
+                <p> {{ship.home_port}} </p>
+            </div>
+            <div matline class="data-header" *ngIf="ship.attempted_landings">
+                <h4> Attempted Landings:  </h4>
+                <p> {{ship.attempted_landings}} </p>
+            </div>
+            <div matline class="data-header" *ngIf="ship.successful_landings">
+                <h4> Home Port:  </h4>
+                <p> {{ship.successful_landings}} </p>
+            </div>
+            <div matline class="data-header">
+                <h4> Active:  </h4>
+                <p> {{ship.active}} </p>
+            </div>
+            <div matline class="data-header" *ngIf="ship.weight_lbs">
+                <h4> Weight:  </h4>
+                <p> {{ship.weight_lbs}} </p>
+            </div>
+            <div matline class="data-header">
+                <h4> Year Built:  </h4>
+                <p> {{ship.year_built}} </p>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

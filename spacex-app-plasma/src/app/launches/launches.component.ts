@@ -29,6 +29,10 @@ const GET_PAST_LAUNCHES = gql`
   }
 `;
 
+function SortByDate(a: any, b: any) {
+  return new Date(b.launch_date_local).getTime() - new Date(a.launch_date_local).getTime();
+}
+
 @Component({
   selector: 'app-launches',
   templateUrl: './launches.component.html',
@@ -54,14 +58,17 @@ export class LaunchesComponent implements OnInit {
     .subscribe((result: any) => {
       //Load original launches list, and the display list that will be filtered
       this.launchesBackend = result?.data?.launchesPast;
-      this.launchesDisplay = this.launchesBackend;
+      //Sort launches by launch date
+      this.launchesDisplay = this.launchesBackend.slice().sort(SortByDate);
       this.loading = result.loading;
       this.error = result.error;
     });
 
     this.myControl.valueChanges.subscribe(val => {
-      //Filter backend launches using the search query, and set displayed launches
-      this.launchesDisplay = this.launchesBackend.filter((launch) => launch.mission_name.toLowerCase().startsWith(val.toLowerCase()))
+      //Filter backend launches using the search query, and set displayed launches with sort
+      this.launchesDisplay = this.launchesBackend.filter((launch) => 
+        launch.mission_name.toLowerCase().startsWith(val.toLowerCase())
+      ).slice().sort(SortByDate)
     })
   }
 }
